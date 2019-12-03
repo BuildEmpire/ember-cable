@@ -8,8 +8,8 @@ export default Service.extend({
     this._consumers = [];
   },
 
-  createConsumer(url) {
-    let consumer = Consumer.create(getOwner(this).ownerInjection(), { url: url });
+  createConsumer(url, protocols) {
+    const consumer = Consumer.create(getOwner(this).ownerInjection(), { url, protocols });
     this._consumers.push(consumer);
     return consumer;
   },

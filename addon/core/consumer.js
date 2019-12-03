@@ -13,6 +13,9 @@ export default EmberObject.extend({
   // Default Values
   url: null,
 
+  // Default Values
+  protocols: null,
+
   isConnecting: readOnly('connection.isConnecting'),
   nextConnectionAt: readOnly('connection.nextConnectionAt'),
 

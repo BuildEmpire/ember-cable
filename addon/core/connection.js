@@ -29,7 +29,13 @@ export default EmberObject.extend({
   },
 
   open() {
-    let ws = new WebSocket(get(this, 'consumer.url'));
+    const {url, protocols} = this.getProperties('consumer.url', 'consumer.protocols')
+    let ws;
+    if (protocols) {
+      ws = new WebSocket(url, protocols);
+    } else {
+      ws = new WebSocket(url);
+    }
 
     ['open', 'close', 'error', 'message'].forEach(eventName => {
       ws[`on${eventName}`] = event => {
