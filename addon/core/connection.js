@@ -29,7 +29,7 @@ export default EmberObject.extend({
   },
 
   open() {
-    const {url, protocols} = this.getProperties('consumer.url', 'consumer.protocols')
+    const {url, protocols} = this.get('consumer')
     let ws;
     if (protocols) {
       ws = new WebSocket(url, protocols);
